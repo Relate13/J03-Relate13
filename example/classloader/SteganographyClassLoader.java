@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-
 import example.encoder.SteganographyEncoder;
 
 public class SteganographyClassLoader extends ClassLoader {
@@ -23,7 +22,7 @@ public class SteganographyClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-
+        System.out.println("Try Find Class:");
         try {
             BufferedImage img = ImageIO.read(url);
 

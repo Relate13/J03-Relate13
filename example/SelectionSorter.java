@@ -1,6 +1,6 @@
 package example;
 
-public class BubbleSorter implements Sorter {
+public class SelectionSorter implements Sorter {
 
     private int[] a;
 
@@ -21,15 +21,17 @@ public class BubbleSorter implements Sorter {
 
     @Override
     public void sort() {
-        boolean sorted = false;
-        while (!sorted) {
-            sorted = true;
-            for (int i = 0; i < a.length - 1; i++) {
-                if (a[i] > a[i + 1]) {
-                    swap(i, i + 1);
-                    sorted = false;
+        int index,min;
+        for(int i=0;i<a.length-1;i++){
+            index = i;
+            min = a[i];
+            for(int j=i+1;j<a.length;j++){
+                if(a[j]<min){
+                    min = a[j];
+                    index = j;
                 }
             }
+            swap(index,i);
         }
     }
 

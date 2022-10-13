@@ -23,7 +23,6 @@ public class Scene {
 
         SteganographyClassLoader loader = new SteganographyClassLoader(
                 new URL("http://java.nemoworks.info/images/example.BubbleSorter.png"));
-
         Class c = loader.loadClass("example.BubbleSorter");
 
         Sorter sorter = (Sorter) c.newInstance();
@@ -39,5 +38,4 @@ public class Scene {
         writer.close();
 
     }
-
 }

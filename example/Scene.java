@@ -1,35 +1,40 @@
 package example;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.net.URL;
-
 import example.classloader.SteganographyClassLoader;
 
-public class Scene {
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Random;
 
-    public static void main(String[] args) throws Exception {
+public class Scene  {
 
-        Line line = new Line(7);
-        line.put(Gourd.ONE, 6);
-        line.put(Gourd.TWO, 3);
-        line.put(Gourd.THREE, 1);
-        line.put(Gourd.FOUR, 5);
-        line.put(Gourd.FIVE, 2);
-        line.put(Gourd.SIX, 4);
-        line.put(Gourd.SEVEN, 0);
+    public static void main(String[] args) throws IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        Random random=new Random();
+        Line line = new Line(Monster.MAX_NUM);
+        for(int i=0;i<Monster.MAX_NUM;++i){
+            Monster monster=new Monster(0,i*256/Monster.MAX_NUM,0);
+            line.put(monster,random.nextInt(Monster.MAX_NUM));
+        }
 
-        Geezer theGeezer = Geezer.getTheGeezer();
+        SnakeSpirit theSnakeSpirit = SnakeSpirit.getTheSnakeSpirit();
 
         SteganographyClassLoader loader = new SteganographyClassLoader(
-                new URL("https://github.com/Relate13/J03-Relate13/blob/main/example.SelectionSorter.png"));
-        Class c = loader.loadClass("example.SelectionSorter");
+                new URL("https://i0.hdslb.com/bfs/new_dyn/ee646e7a327507acaab49819c88186332877232.png"));
+        Class c1 = loader.loadClass("example.SelectionSorter");
+        SteganographyClassLoader loader2 = new SteganographyClassLoader(
+                new URL("https://i0.hdslb.com/bfs/new_dyn/2a3fd0d26ad19aaf03aa04b76489e0982877232.png"));
+        Class c2 = loader2.loadClass("example.QuickSorter");
+        SteganographyClassLoader loader3 = new SteganographyClassLoader(
+                new URL("https://i0.hdslb.com/bfs/new_dyn/27d3e14ad51da62c0c45b5ebaeaf56242877232.png"));
+        Class c3 = loader3.loadClass("example.SelectionSorter");
 
-        Sorter sorter = (Sorter) c.newInstance();
+        Sorter sorter = (Sorter) c1.newInstance();
 
-        theGeezer.setSorter(sorter);
+        theSnakeSpirit.setSorter(sorter);
 
-        String log = theGeezer.lineUp(line);
+        String log = theSnakeSpirit.lineUp(line);
 
         BufferedWriter writer;
         writer = new BufferedWriter(new FileWriter("result.txt"));
@@ -38,4 +43,5 @@ public class Scene {
         writer.close();
 
     }
+
 }

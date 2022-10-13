@@ -7,12 +7,18 @@ public class Line {
     }
 
     private Position[] positions;
+    private int currentSize=0;
 
-    public void put(Linable linable, int i) {
-        if (this.positions[i] == null) {
-            this.positions[i] = new Position(null);
+    public void put(Linable linable,int i){
+        if(currentSize> positions.length){
+            return;
         }
+        while (positions[i]!=null){
+            i=(i+1)%positions.length;
+        }
+        this.positions[i] = new Position(null);
         this.positions[i].setLinable(linable);
+        ++currentSize;
     }
 
     public Linable get(int i) {
@@ -41,8 +47,14 @@ public class Line {
     @Override
     public String toString() {
         String lineString = "\t";
+        int i=0;
         for (Position p : positions) {
             lineString += p.linable.toString();
+            ++i;
+            if(i==16){
+                lineString+="\n";
+                i=0;
+            }
         }
         return lineString;
     }

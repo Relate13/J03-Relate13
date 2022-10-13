@@ -1,6 +1,6 @@
 package example;
 
-public class SelectionSorter implements Sorter {
+public class SelectionSorter1 implements Sorter {
 
     private int[] a;
 

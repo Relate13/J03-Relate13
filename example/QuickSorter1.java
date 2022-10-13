@@ -1,6 +1,6 @@
 package example;
 
-public class QuickSorter implements Sorter {
+public class QuickSorter1 implements Sorter {
 
     private int[] a;
 

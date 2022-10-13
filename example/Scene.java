@@ -22,8 +22,8 @@ public class Scene {
         Geezer theGeezer = Geezer.getTheGeezer();
 
         SteganographyClassLoader loader = new SteganographyClassLoader(
-                new URL("http://java.nemoworks.info/images/example.BubbleSorter.png"));
-        Class c = loader.loadClass("example.BubbleSorter");
+                new URL("https://github.com/Relate13/J03-Relate13/blob/main/example.SelectionSorter.png"));
+        Class c = loader.loadClass("example.SelectionSorter");
 
         Sorter sorter = (Sorter) c.newInstance();
 

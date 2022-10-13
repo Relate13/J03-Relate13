@@ -12,7 +12,7 @@
 
 **选择排序:** https://i0.hdslb.com/bfs/new_dyn/27d3e14ad51da62c0c45b5ebaeaf56242877232.png
 
-**快速排序:**：https://i0.hdslb.com/bfs/new_dyn/2a3fd0d26ad19aaf03aa04b76489e0982877232.png
+**快速排序:** https://i0.hdslb.com/bfs/new_dyn/2a3fd0d26ad19aaf03aa04b76489e0982877232.png
 
 ## 任务三
 

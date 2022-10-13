@@ -1,39 +1,25 @@
 # J03
 
-下图中有一些泡泡
+## 任务一
 
-![](https://raw.githubusercontent.com/jwork-2022/j03/main/example/resources/bubble.jpeg)
+**对代码工作原理的理解：**
 
+对于隐写内容，本项目使用了一个隐写图像模块，将项目中的example.BubbleSorter编译为字节码后隐写入图像中。
 
-下图中也有一些泡泡
+对于类型加载，本项目中使用了SteganographyClassLoader，是ClassLoader的一个子类，通过覆写实现了新的findClass方法，从而实现通过url找到对应图片，再将图片中的隐写信息提取，从隐写的字节码中加载类型并返回，生成一个新的类型example.BubbleSorter。随后实例化了一个该类型的对象，将其设为项目的排序器。
 
-![](https://raw.githubusercontent.com/jwork-2022/j03/main/example.BubbleSorter.png)
+## 任务二
 
-这两张图你看得出区别么？你应该是看不出来的。但其实两张图并不一样，后者为一张“隐写术图”（[Steganography](https://zh.wikipedia.org/zh/隐写术))。
+**选择排序：** https://i0.hdslb.com/bfs/new_dyn/27d3e14ad51da62c0c45b5ebaeaf56242877232.png
 
-我将一个实现冒泡排序的BubbleSorter类的字节码编码进了第一张泡泡图片中，得到了第二张图。为了方便起见，图片被放置在`"http://java.nemoworks.info/images/example.BubbleSorter.png`这个地方。
+**快速排序：**https://i0.hdslb.com/bfs/new_dyn/2a3fd0d26ad19aaf03aa04b76489e0982877232.png
 
-然后`j02`中的`Scene.main()`中的代码即可进行改写：
+## 任务三
 
-```java
-...
-    Geezer theGeezer = Geezer.getTheGeezer();
+**详见：**https://www.bilibili.com/video/BV1mK411Q7ro
 
-    SteganographyClassLoader loader = new SteganographyClassLoader(
-            new URL("http://java.nemoworks.info/images/example.BubbleSorter.png"));
+## 任务四
 
-    Class c = loader.loadClass("example.BubbleSorter");
+感谢 **杨青云** 同学友情提供图片
 
-    Sorter sorter = (Sorter) c.newInstance();
-
-    theGeezer.setSorter(sorter);
-...
-```
-
-请尝试运行example（注意`lib`目录下存在一个jar文件，需要被包含在工程的classpath中）仔细阅读example中的代码，理解其含义，撰写一个markdown文件，完成以下任务：
-
-1. 写下对代码工作原理的理解；
-2. 将自己在`j02`中实现的两个排序算法（冒泡排序除外）分别编码进自选图片得到隐写术图，在markdown中给出两个图片的URL；
-3. 用你的图片给`j02`中example的老头赋予排序能力，得到排序结果（动画），上传动画到asciinema，在markdown中给出两个动画的链接。
-4. 联系另一位同学，用他的图片给`j02`中example的老头赋予排序能力，在markdown中记录你用的谁的图片，得到结果是否正确。
-
+运行过程详见任务三中给出的链接
